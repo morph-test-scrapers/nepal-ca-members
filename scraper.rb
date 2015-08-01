@@ -28,6 +28,7 @@ def reprocess_csv(file)
       phone: (row[4] || "").lines.first,
       term: 'ca2',
     }
+    puts data[:name]
     ScraperWiki.save_sqlite([:name, :term], data)
   end
 end
