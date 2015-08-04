@@ -18,9 +18,9 @@ def reprocess_csv(file)
     next if row[8].to_s.empty?
     next if row[0].to_s.include? 'Development Region'
     data = { 
-      name: row[2],
+      name: row[2].encode('utf-8'),
       name__en: row[8],
-      area: row[1],
+      area: row[1].encode('utf-8'),
       area__en: row[7],
       email: row[6],
       party: row[5],
