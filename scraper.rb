@@ -12,15 +12,15 @@ OpenURI::Cache.cache_path = '.cache'
 
 def reprocess_csv(file)
   raw = open(file).read
-  csv = CSV.parse(raw.lines.drop(2).join, encoding: "UTF-8")
+  csv = CSV.parse(raw.lines.drop(2).join.encode("UTF-8"))
   csv.each do |row|
     next if row[0].to_s.empty?
     next if row[8].to_s.empty?
     next if row[0].to_s.include? 'Development Region'
     data = { 
-      name: row[2].encode('utf-8'),
+      name: row[2],
       name__en: row[8],
-      area: row[1].encode('utf-8'),
+      area: row[1],
       area__en: row[7],
       email: row[6],
       party: row[5],
