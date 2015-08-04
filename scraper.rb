@@ -12,7 +12,7 @@ OpenURI::Cache.cache_path = '.cache'
 
 def reprocess_csv(file)
   raw = open(file).read
-  csv = CSV.parse(raw.lines.drop(2).join)
+  csv = CSV.parse(raw.lines.drop(2).join, encoding: "UTF-8")
   csv.each do |row|
     next if row[0].to_s.empty?
     next if row[8].to_s.empty?
